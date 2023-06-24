@@ -1,0 +1,22 @@
+.form-outline {
+  position: relative;
+}
+
+.form-outline label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(50%);
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+  color: #999;
+}
+
+.form-outline label.active {
+  transform: translateY(0%);
+  font-size: 0.875rem;
+}
+
+.form-outline input {
+  padding-top: 2rem;
+}
