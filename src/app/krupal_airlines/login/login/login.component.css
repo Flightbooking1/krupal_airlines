@@ -1,22 +1,54 @@
-.form-outline {
-  position: relative;
-}
 
-.form-outline label {
-  position: absolute;
+.login-page {
   top: 0;
-  left: 0;
-  transform: translateY(50%);
-  pointer-events: none;
-  transition: all 0.2s ease-out;
-  color: #999;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
+
+  background-image: url(https://media.npr.org/assets/img/2021/10/06/gettyimages-1302813215_wide-6c48e5a6aff547d2703693450c4805978de47435.jpg)
 }
 
-.form-outline label.active {
-  transform: translateY(0%);
-  font-size: 0.875rem;
+mat-card {
+  width: 35%;
+  height:130%;
+  margin: 2% auto;
+  border-radius: 8px;
 }
 
-.form-outline input {
-  padding-top: 2rem;
+mat-form-field, mat-checkbox {
+  width: 90%;
+  display: block;
+  margin: auto;
+  color:rgb(31, 27, 107);
+}
+mat-card-content {
+  margin-top: 10px;
+  color:rgb(31, 18, 18);
+  font-size: small;
+
+}
+.value{
+  font-size: small;
+}
+.value-sigin{
+  font-size: large;
+}
+.login-button {
+  margin-top: 20px;
+  display: block;
+  width:70%;
+  margin: 20px auto;
+}
+.forgot-button{
+  margin-top: 20px;
+  display: block;
+  width: 50%;
+  margin: 20px auto;
 }
