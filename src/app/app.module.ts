@@ -11,24 +11,22 @@ import { KrupalComponent } from './krupal_airlines/krupal/krupal.component';
 import { SeatComponent } from './krupal_airlines/seat/seat.component';
 import { LoginComponent } from './krupal_airlines/login/login/login.component';
 import { FormsModule } from '@angular/forms';
-
-
-
+import { KrupalModule } from './krupal_airlines/krupal.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    KrupalComponent,SeatComponent,LoginComponent,
+    KrupalComponent,SeatComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,FormsModule,
-
+    KrupalModule,
     KrupalAdminModule,
     RouterModule.forRoot([
       {  path: 'home', component: KrupalComponent},
+      {  path: 'login', component: LoginComponent},
       {
         path:"admin",
         loadChildren:()=>import('./krupal_airlines_admin/krupaladmin.module').then(x=>x.KrupalAdminModule)
