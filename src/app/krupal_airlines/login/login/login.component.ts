@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -56,7 +57,6 @@ export class LoginComponent implements OnInit {
   togglePasswordVisibility(): void {
   this.hidePassword = !this.hidePassword;
 }
-
   ngOnInit(): void {
   }
 

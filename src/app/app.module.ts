@@ -17,7 +17,8 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
 @NgModule({
   declarations: [
     AppComponent,
-    KrupalComponent,SeatComponent
+
+    KrupalComponent,SeatComponent,LoginComponent,
   ],
   imports: [
     BrowserModule,
