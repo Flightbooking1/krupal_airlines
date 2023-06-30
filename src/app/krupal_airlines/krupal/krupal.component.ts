@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KrupalComponent implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
