@@ -1,179 +1,159 @@
-<div style="background-image: url(https://media.npr.org/assets/img/2021/10/06/gettyimages-1302813215_wide-6c48e5a6aff547d2703693450c4805978de47435.jpg);">
 
 
-<div style="height: 200px;width: 800px;padding-left: 500px;padding-top: 100px; align-items: center;">
-<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link active"
-      id="tab-login"
-      data-mdb-toggle="pill"
-      href="#pills-login"
-      role="tab"
-      aria-controls="pills-login"
-      aria-selected="true"
-      >Login</a
-    >
-  </li>
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link"
-      id="tab-register"
-      data-mdb-toggle="pill"
-      href="#pills-register"
-      role="tab"
-      aria-controls="pills-register"
-      aria-selected="false"
-      >Register</a
-    >
-  </li>
-</ul>
-<!-- Pills navs -->
+  <div class="login-page" >
 
-<!-- Pills content -->
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-    <form>
-      <div class="text-center mb-3">
-        <p>Sign in with:</p>
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
+    <mat-card class="mat-elevation-z12"style= "opacity: 0.75; height:80%; margin-top:10vh ;" >
 
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
+      <mat-card-title style="text-align: center"*ngIf="!this.showForgotPassword && !this.proceedtoResetpage" >SignIn/SignUp</mat-card-title>
+      <mat-card-title style="text-align: center"*ngIf="this.showForgotPassword && !this.proceedtoResetpage" >Forgot Password ?</mat-card-title>
+      <mat-tab-group mat-stretch-tabs  class="example-stretched-tabs">
 
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
+        <mat-tab label="Sign In" *ngIf="!this.showForgotPassword">
+          <mat-card-content>
 
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
-      </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
 
-      <p class="text-center">or:</p>
+              <mat-form-field class="value-sigin">
+                <input matInput placeholder="Email"  name="email" formControlName="email"/>
+                <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+                <mat-error *ngIf="email?.errors?.['email']" >email is not valid</mat-error>
+                <mat-icon matSuffix >email</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="value-sigin">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password" formControlName="password" />
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
+              </mat-form-field>
 
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="loginName" class="form-control" />
-        <label class="form-label" for="loginName">Email or username</label>
-      </div>
+              <button mat-raised-button color="warn" class="forgot-button" (click)="forgotpassword()">Forgot password</button>
+              <div>
+                <p-toast></p-toast>
+              <button mat-raised-button color="primary" class="login-button"  [disabled]="!loginForm.valid" >Sign In</button>
+            </div>
+            </form>
 
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="loginPassword" class="form-control" />
-        <label class="form-label" for="loginPassword">Password</label>
-      </div>
+          </mat-card-content>
 
-      <!-- 2 column grid layout -->
-      <div class="row mb-4">
-        <div class="col-md-6 d-flex justify-content-center">
-          <!-- Checkbox -->
-          <div class="form-check mb-3 mb-md-0">
-            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-            <label class="form-check-label" for="loginCheck"> Remember me </label>
-          </div>
-        </div>
-
-        <div class="col-md-6 d-flex justify-content-center">
-          <!-- Simple link -->
-          <a href="#!">Forgot password?</a>
-        </div>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        </mat-tab>
 
 
+        <mat-tab label="Sign Up" *ngIf="!this.showForgotPassword ">
+          <mat-card-content>
+
+            <form [formGroup]="registerForm"  (ngSubmit)="onRegister()" novalidate >
+
+              <mat-form-field class="value">
+                <input matInput placeholder="First Name" name="first_name" formControlName="first_name" />
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="first_name?.invalid">firstname is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="value">
+                <input matInput placeholder="Last Name" name="last_name" formControlName="last_name" />
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="last_name?.invalid">lastname is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="value">
+                <input matInput placeholder="Email" name="email" formControlName="email" />
+                <mat-error *ngIf="email?.invalid">Email is required</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field class="value">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password" formControlName="password" />
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="value">
+                <input matInput placeholder="Phone Number" type="tel" required pattern="[0-9]{10}" name="phone_number" formControlName="phone_number" />
+                <mat-error *ngIf="phone_number?.errors && phone_number?.errors?.['required']">Phone number is required</mat-error>
+                <mat-error *ngIf="phone_number?.errors && phone_number?.errors?.['pattern']">Please enter a valid 10-digit phone number</mat-error>
+                <mat-icon matSuffix>phone</mat-icon>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="!registerForm.valid" >Sign Up</button>
+
+            </form>
+
+          </mat-card-content>
+        </mat-tab>
+
+
+        <mat-tab label="Forgot Password" *ngIf="this.showForgotPassword && !this.isenteringotp && !this.proceedtoResetpage">
+          <mat-card-content>
+        <br><br><br>
+            <form [formGroup]="forgotpasswordForm"   (ngSubmit)="onSubmitForgotPassword()" novalidate>
+
+              <mat-form-field class="value-sigin">
+                <input matInput placeholder="Email"  name="email" formControlName="email"/>
+                <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+                <mat-error *ngIf="email?.errors?.['email']" >email is not valid</mat-error>
+                <mat-icon matSuffix >email</mat-icon>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="login-button"  [disabled]="!forgotpasswordForm.valid" >Continue</button>
+            </form>
+
+
+          </mat-card-content>
+
+        </mat-tab>
+
+        <mat-tab label="OTP VERIFICATION" *ngIf="showForgotPassword && isenteringotp && !proceedtoResetpage">
+          <mat-card-content>
+            <div class="container">
+              <div class="inputfield">
+                <input [ngStyle]="{ 'border-color': borderColor }" type="number" maxlength="1" class="input" [(ngModel)]="first" name="first" onKeyPress="if(this.value.length==1) return false;"/>
+                <input [ngStyle]="{ 'border-color': borderColor }" type="number" maxlength="1" class="input" [(ngModel)]="second" name="second" onKeyPress="if(this.value.length==1) return false;"  />
+                <input [ngStyle]="{ 'border-color': borderColor }" type="number" maxlength="1" class="input" [(ngModel)]="third" name="third" onKeyPress="if(this.value.length==1) return false;"  />
+                <input [ngStyle]="{ 'border-color': borderColor }" type="number" maxlength="1" class="input" [(ngModel)]="fourth" name="fourth" onKeyPress="if(this.value.length==1) return false;"  />
+              </div>
+            </div>
+            <div class="ResendOTP">
+              <p class="centered-text">Resend Otp in 00: {{ remainingTime }}</p>
+             <button mat-raised-button color="primary" class="reset-button" [disabled]="remainingTime > 0"(click)="resendotp()">Resend Otp</button>
+            </div>
+          </mat-card-content>
+        </mat-tab>
+
+        <mat-tab label="RESET" *ngIf="this.proceedtoResetpage && this.showForgotPassword">
+          <mat-card-content>
+
+            <form [formGroup]="resetForm"  (ngSubmit)="reset()" novalidate >
+              <br>
+              <br>
+              <br>
+              <mat-form-field class="value">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password" formControlName="password" ngModel  />
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="value">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="confirm password" name="confirmpassword" formControlName="confirmpassword" />
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
+                <mat-error *ngIf="resetForm.get('password')?.value!=resetForm.get('confirmpassword')?.value">Password doesnot match</mat-error>
+              </mat-form-field>
+
+              <div>
+                <p-toast></p-toast>
+              <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="!resetForm.valid">Reset</button>
+              </div>
+            </form>
+
+          </mat-card-content>
+        </mat-tab>
 
 
 
+      </mat-tab-group>
+    </mat-card>
 
-      <!-- Register buttons -->
-      <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
-      </div>
-    </form>
   </div>
-  <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    <form>
-      <div class="text-center mb-3">
-        <p>Sign up with:</p>
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
-
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
-
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-
-        <button type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
-      </div>
-
-      <p class="text-center">or:</p>
-
-      <!-- Name input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerName" class="form-control" />
-        <label class="form-label" for="registerName">Name</label>
-      </div>
-
-      <!-- Username input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerUsername" class="form-control" />
-        <label class="form-label" for="registerUsername">Username</label>
-      </div>
-
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="registerEmail" class="form-control" />
-        <label class="form-label" for="registerEmail">Email</label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerPassword" class="form-control" />
-        <label class="form-label" for="registerPassword">Password</label>
-      </div>
-
-      <!-- Repeat Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" />
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div>
-
-      <!-- Checkbox -->
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input
-          class="form-check-input me-2"
-          type="checkbox"
-          value=""
-          id="registerCheck"
-          checked
-          aria-describedby="registerCheckHelpText"
-        />
-        <label class="form-check-label" for="registerCheck">
-          I have read and agree to the terms
-        </label>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-    </form>
-  </div>
-</div>
-<!-- Pills content -->
-</div>
-<div style="height: 700px;width: 1000px;">
-</div>
-</div>
 
 

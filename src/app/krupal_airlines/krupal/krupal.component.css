@@ -1,0 +1,23 @@
+/* .carousel-item{
+    height: 50vh;
+} */
+
+img {
+    filter: brightness(100%);
+}
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform .5s ease-in-out;
+}
+
+carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  display: block;
+}
+
+
