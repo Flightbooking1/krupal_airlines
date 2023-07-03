@@ -32,9 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KrupalComponent } from './krupal/krupal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
-  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,
+  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
     MatCardModule,
     MatIconModule,
     MatTabsModule,

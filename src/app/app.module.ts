@@ -16,13 +16,11 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    KrupalComponent,SeatComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,KrupalModule,
     BrowserAnimationsModule, FormsModule,
-    KrupalModule,
     KrupalAdminModule,
     RouterModule.forRoot([
       { path: 'home', component: KrupalComponent },
