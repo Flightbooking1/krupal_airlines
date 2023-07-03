@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KrupalComponent } from './krupal/krupal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SeatComponent } from './seat/seat.component';
 
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,
@@ -61,8 +62,8 @@ import { HeaderComponent } from './header/header.component';
     MatBadgeModule,
     BrowserAnimationsModule,
   ],
-  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent],
-  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent],
+  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent],
+  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent],
   providers: [UserService],
 })
 export class KrupalModule { }
