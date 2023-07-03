@@ -3,15 +3,12 @@ import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { PagesComponent } from './pages/pages.component';
-import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { BrowserModule } from '@angular/platform-browser';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 let routing=RouterModule.forChild(
   [
     {
@@ -24,18 +21,28 @@ let routing=RouterModule.forChild(
           path: 'coupons',
           loadChildren: () => import('../coupons/coupons.module').then(m => m.CouponsModule)
         },
-        {path: 'pages', component: PagesComponent},
-        {path: 'media', component: MediaComponent},
-        {path: 'settings', component: SettingsComponent}
+        {path: 'settings', component: SettingsComponent},
+        {
+          path: 'airport',
+          loadChildren: () => import('../airport/airport.module').then(m => m.AirportModule)
+        },
+        {
+          path: 'flight',
+          loadChildren: () => import('../flight/flight.module').then(m => m.FlightModule)
+        },
+        {
+          path: 'schedule',
+          loadChildren: () => import('../schedule/schedule.module').then(m => m.ScheduleModule)
+        },
       ]
     }
   ]
 )
 @NgModule({
-  imports: [routing,BrowserModule],
-  exports: [SidenavComponent,AdminComponent],
+  imports: [routing,BrowserModule,HttpClientModule],
+  exports: [SidenavComponent,AdminComponent,],
   declarations: [
-    SublevelMenuComponent,SidenavComponent,AdminComponent
+    SublevelMenuComponent,SidenavComponent,AdminComponent,
   ],
   providers: [],
 })
