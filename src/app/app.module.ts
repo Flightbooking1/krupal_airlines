@@ -20,9 +20,8 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule, FormsModule,KrupalModule,
-
+    BrowserModule,KrupalModule,
+    BrowserAnimationsModule, FormsModule,
     KrupalAdminModule,
     RouterModule.forRoot([
       { path: 'home', component: KrupalComponent },

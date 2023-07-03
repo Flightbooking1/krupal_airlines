@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { MessageService } from 'primeng/api';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,8 +16,11 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
   isenteringotp:boolean=false;
   changepassword:boolean=false;
 
-  constructor(private router:Router,private formBuild:FormBuilder,private service:UserService,private messageService: MessageService) { }
+  constructor(private router:Router,private _snackBar: MatSnackBar,private formBuild:FormBuilder,private service:UserService,private messageService: MessageService) { }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
   resetForm=this.formBuild.group({
     password:new FormControl('',[Validators.required,Validators.minLength(6)]),
     confirmpassword:new FormControl('',[Validators.required,Validators.minLength(6)])
@@ -71,17 +75,45 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
     let token= localStorage.getItem("token")
     let user=localStorage.getItem("user")
     if(token!=null&& user!=null){
+      return user;
       // console.log(atob(tok));
       // console.log(JSON.parse(atob(user)));
     }
+  else return "";
    }
+
+getrole(){
+  let role=localStorage.getItem("role")
+  if(role!=null)return role;
+  else return "";
+}
+islogedin(){
+ if(this.getcurrentuser()!=""){
+   return true;
+ }
+ else return false;
+}
 
    onLogin(){
     console.log(this.loginForm.value)
+    this.loginForm.value.password=btoa(this.loginForm.value.password)
     this.service.loginUser(this.loginForm.value).subscribe(
       (data:any)=>{
         localStorage.setItem("token",btoa(data.jwt))
         localStorage.setItem("user",btoa(JSON.stringify(data.user)))
+        localStorage.setItem("role",data.user.role)
+
+        if(data.user.role=="admin"){
+          this.router.navigateByUrl("admin")
+this.openSnackBar("log in sucessfull","X")
+        }
+        else{
+          this.router.navigateByUrl("home")
+          this.openSnackBar("LOG IN SUCESSFULLY","OK")
+        }
+
+
+
       },
       (error)=>{
         this.showError()
@@ -118,10 +150,13 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
    onRegister(){
     console.log("register")
     console.log(this.registerForm.value);
+    this.registerForm.value.password=btoa(this.registerForm.value.password)
     this.service.registerUser(this.registerForm.value).subscribe(
       data=>console.log(data)
     )
    }
+
+
    hidePassword: boolean = true;
 
   togglePasswordVisibility(): void {
@@ -208,26 +243,19 @@ stopTimer() {
 }
 
 ngOnChanges(changes: SimpleChanges) {
-  // if (changes) {
-  //   console.log('Input property "data" changed',changes);
-  // }
 }
 
 ngDoCheck() {
-  // Custom change detection logic
-  // console.log('Change detection performed',this.first,this.second,this.third,this.fourth);
 
   if(this.first!=''&& this.second!=''&& this.third!=''&& this.fourth!=''
 ||this.first!=undefined&& this.second!=undefined&& this.third!=undefined&& this.fourth!=undefined
 ||this.first!=' '&& this.second!=' '&& this.third!=' '&& this.fourth!=' '){
-  // console.log('Changing inside ',this.first,this.second,this.third,this.fourth);
+
 if(this.currentotp!=""){
-  // console.log('comparing',this.first,this.second,this.third,this.fourth,this.currentotp.charAt(0),this.currentotp.charAt(1),this.currentotp.charAt(2),this.currentotp.charAt(3));
+
  let otpentered=this.first+""+this.second+""+this.third+""+this.fourth
-//  console.log(otpentered)
-//  console.log(this.currentotp);
+
   if (otpentered==this.currentotp) {
-    // console.log("OTP is correct");
    this. isotpcorrectcolour=true;
    this.getDynamicStyles();
     setTimeout(() => {
@@ -236,13 +264,11 @@ if(this.currentotp!=""){
     }, 1000);
 
   } else {
-    // console.log(otpentered)
     if(otpentered.trim().length<4){
       return
     }
     this.isotpcorrect = false;
     this.getDynamicStyles();
-    // console.log("Incorrect OTP");
   }
 }
 }
