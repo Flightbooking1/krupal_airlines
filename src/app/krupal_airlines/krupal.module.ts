@@ -19,6 +19,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { BrowserModule } from '@angular/platform-browser';
+import { UserService } from '../services/user/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
 import { SearchComponent } from './search/search.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,7 +34,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,
+  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,
     MatCardModule,
     MatIconModule,
     MatTabsModule,
@@ -51,16 +54,15 @@ import { HeaderComponent } from './header/header.component';
     MatStepperModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    ToastModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
     MatAutocompleteModule,
     MatTooltipModule,
     MatBadgeModule,
     BrowserAnimationsModule,
-    // DropdownModule
-
   ],
   exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent],
   declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent],
-  providers: [],
+  providers: [UserService],
 })
 export class KrupalModule { }

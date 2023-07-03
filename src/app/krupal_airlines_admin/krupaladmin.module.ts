@@ -9,8 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { BrowserModule } from '@angular/platform-browser';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 let routing=RouterModule.forChild(
   [
