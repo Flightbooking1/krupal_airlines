@@ -1,3 +1,6 @@
+
+import { BookingComponent } from './booking/booking/booking.component';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -63,8 +66,9 @@ import { SeatComponent } from './seat/seat.component';
     MatBadgeModule,
     BrowserAnimationsModule,
   ],
-  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent],
-  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent],
+  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent,BookingComponent],
+  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent,BookingComponent],
   providers: [UserService],
+
 })
 export class KrupalModule { }
