@@ -33,6 +33,8 @@ import { KrupalComponent } from './krupal/krupal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SeatComponent } from './seat/seat.component';
+
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
     MatCardModule,
@@ -61,8 +63,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatBadgeModule,
     BrowserAnimationsModule,
   ],
-  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent],
-  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent],
+  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent],
+  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent],
   providers: [UserService],
 })
 export class KrupalModule { }
