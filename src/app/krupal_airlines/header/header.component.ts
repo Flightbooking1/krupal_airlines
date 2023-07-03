@@ -10,10 +10,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router:Router
     ) { }
+
+
+
   gotologin(){
     console.log("logining");
-
-this.router.navigateByUrl("login")
+   this.router.navigateByUrl("login")
   }
 
 
