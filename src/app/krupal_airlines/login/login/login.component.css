@@ -22,6 +22,14 @@ mat-card {
   border-radius: 8px;
 }
 
+@media (max-width: 550px) {
+  mat-card {
+    width: 80%;
+    height: auto;
+    margin: 10%;
+  }
+}
+
 mat-form-field, mat-checkbox {
   width: 90%;
   display: block;
@@ -51,4 +59,70 @@ mat-card-content {
   display: block;
   width: 50%;
   margin: 20px auto;
+}
+.box{
+  width: 20px;
+  height: 20px;
+  border:2px solid black;
+}
+.container {
+
+  background-color: #ece6e6;
+  padding: 2em 1em;
+
+  border-radius: 0.8em;
+  /* box-shadow: 0 1px 1px rgba(30, 22, 1, 0.3); */
+}
+.inputfield {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.input {
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid #08031e;
+  outline: none;
+  text-align: center;
+  font-size: 1.5em;
+  border-radius: 0.3em;
+  background-color: #ece8e8;
+  /* outline: none; */
+  /*Hide number field arrows*/
+  /* -moz-appearance: textfield; */
+}
+
+.mat-tab-body.mat-tab-body-active {
+    position: relative;
+    overflow-x: inherit;
+    z-index: 1;
+    flex-grow: 1;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+
+}
+.ResendOTP {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.centered-text {
+  margin: 0;
+}
+
+.resendOtp-button {
+  margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .ResendOTP {
+    padding: 10px;
+  }
 }
