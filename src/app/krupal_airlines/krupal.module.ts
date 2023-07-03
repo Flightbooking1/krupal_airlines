@@ -19,10 +19,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { BrowserModule } from '@angular/platform-browser';
-
+import { UserService } from '../services/user/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast'
 
 @NgModule({
-  imports: [FormsModule,MatFormFieldModule,FormsModule,ReactiveFormsModule,BrowserModule,
+  imports: [FormsModule,MatFormFieldModule,FormsModule,ReactiveFormsModule,BrowserModule,HttpClientModule,
     MatCardModule,
     MatIconModule,
     MatTabsModule,
@@ -43,10 +45,10 @@ import { BrowserModule } from '@angular/platform-browser';
     MatStepperModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-
+    ToastModule,
   ],
   exports: [LoginComponent],
   declarations: [LoginComponent],
-  providers: [],
+  providers: [UserService],
 })
 export class KrupalModule { }

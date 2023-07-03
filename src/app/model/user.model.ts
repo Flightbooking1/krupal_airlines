@@ -5,7 +5,7 @@ export class Login{
     public password:string,
   ){}
 }
-export class Register{
+export class User{
    public check :boolean=true
   public user_id:number=0
   constructor(
@@ -20,9 +20,16 @@ export class Register{
 }
   export class Reset{
     constructor(
-      public id:number,
       public oldpassword:string,
       public newpassword:string,
       ){}
   }
+  export class otp{
+    constructor(
+      public message:string,
+      public Secretkey:number,
+      ){}
+  }
+
+
 
