@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { KrupalModule } from './krupal_airlines/krupal.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -26,6 +25,7 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
     RouterModule.forRoot([
       { path: 'home', component: KrupalComponent },
       { path: 'login', component: LoginComponent },
+      {  path: 'seat', component: SeatComponent},
       {
         path: "admin",
         loadChildren: () => import('./krupal_airlines_admin/krupaladmin.module').then(x => x.KrupalAdminModule)
