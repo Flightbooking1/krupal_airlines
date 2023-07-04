@@ -37,10 +37,11 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeatComponent } from './seat/seat.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
-    MatCardModule,
+    MatCardModule,CarouselModule,
     MatIconModule,
     MatTabsModule,
     MatCheckboxModule,
