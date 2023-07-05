@@ -41,10 +41,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FlightSearchService } from '../services/scheduleSearch/ScheduleSearch.service';
 import { ScheduledFlightsComponent } from './scheduled-flights/scheduled-flights.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
-    MatCardModule,
+    MatCardModule,CarouselModule,
     MatIconModule,
     MatTabsModule,
     MatCheckboxModule,

@@ -1,27 +1,19 @@
-/* .carousel-item{
-    height: 50vh;
-} */
 
-img {
-  filter: brightness(100%);
+.owl-theme .owl-nav.disabled+.owl-dots {
+  margin-top: -38px;
 }
 
-.carousel-item {
-  position: relative;
-  display: none;
-  float: left;
+.outer[_ngcontent-whd-c130] {
   width: 100%;
-  margin-right: -100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transition: transform .5s ease-in-out;
+  position: relative;
+  top: -5em;
+  margin-bottom: -6em;
+  z-index: 1;
+}
+.search{
+  margin-top: -13vh;
 }
 
-carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-  display: block;
-}
 
 .cities {
   margin-top: 8rem;
