@@ -1,3 +1,5 @@
+import { Airport } from "./airport";
+
 export class Booking{
     constructor(
         public bookingId:number,
@@ -34,8 +36,8 @@ export class Passenger{
 
 export class SearchFlight{
     constructor(
-    public fromLocation?:string,
-    public toLocation?:string,
+    public fromLocation?:Airport,
+    public toLocation?:Airport,
     public departureDate?:Date,
     public returnDate?:Date,
     public passengers?:number

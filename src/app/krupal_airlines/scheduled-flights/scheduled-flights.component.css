@@ -1,0 +1,53 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem;
+    padding-top: 10em;
+
+  }
+  
+  .flight-pair {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+  }
+  
+  
+  
+  .flight-info,
+  .info {
+    text-align: center;
+  }
+  
+  .time,
+  .duration,
+  .stops,
+  .terminal,
+  .price {
+    margin: 0;
+  }
+  
+  .image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .info{
+    display: flex;
+    gap: 2rem;
+  }
+  

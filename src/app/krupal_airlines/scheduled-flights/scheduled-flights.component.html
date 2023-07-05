@@ -1,0 +1,39 @@
+<krupal-header style="z-index: 5;position: fixed;width: 100%;"></krupal-header>
+<div class="main">
+  <div *ngFor="let flight of flights" class="flight-pair d-flex">
+    <div class="flight-info">
+      <div class="icon-container">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div>
+        <!-- <h4 class="time">{{ flight.departure_time }}</h4> -->
+        <h4 class="terminal">{{ flight.source_airport.city }} </h4>
+      </div>
+    </div>
+    <div class="info">
+
+      <span class="image-container">
+        <h6>------------------------------<i class="fa fa-plane"
+            aria-hidden="true"></i>---------------------------------</h6>
+      </span>
+
+    </div>
+
+    <div class="flight-info">
+      <div class="icon-container">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div>
+        <!-- <h4 class="time">{{ flight.arrival_time | date}}</h4> -->
+        <h5 class="terminal">{{ flight.destination_airport.city }} </h5>
+      </div>
+    </div>
+    <div class="info">
+      <h3 class="price">₹{{ flight.base_price }}</h3>
+      <button mat-raised-button type="submit" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-right-radius: 0px;height: 4em;float: right;;
+                        width: 10em;background-color: #0fbcbf; "><span style="font-size: large;
+    font-weight: 500;">Select</span></button>
+    </div>
+  </div>
+</div>
+<div><krupal-footer></krupal-footer></div>

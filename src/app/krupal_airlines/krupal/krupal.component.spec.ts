@@ -8,9 +8,9 @@ describe('KrupalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KrupalComponent ]
+      declarations: [KrupalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

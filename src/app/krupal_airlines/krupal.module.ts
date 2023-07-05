@@ -37,7 +37,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeatComponent } from './seat/seat.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FlightSearchService } from '../services/scheduleSearch/ScheduleSearch.service';
+import { ScheduledFlightsComponent } from './scheduled-flights/scheduled-flights.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
@@ -66,10 +71,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatTooltipModule,
     MatBadgeModule,
     BrowserAnimationsModule,
+    DropdownModule,
+    SelectButtonModule
   ],
-  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent,BookingComponent],
-  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent,BookingComponent],
-  providers: [UserService],
+  exports: [LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent,BookingComponent,ScheduledFlightsComponent],
+  declarations: [LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent,BookingComponent, ScheduledFlightsComponent,ScheduledFlightsComponent],
+  providers: [UserService,FlightSearchService],
 
 })
 export class KrupalModule { }
