@@ -3,8 +3,9 @@
 } */
 
 img {
-    filter: brightness(100%);
+  filter: brightness(100%);
 }
+
 .carousel-item {
   position: relative;
   display: none;
@@ -16,8 +17,30 @@ img {
   transition: transform .5s ease-in-out;
 }
 
-carousel-item-next, .carousel-item-prev, .carousel-item.active {
+carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
   display: block;
 }
 
+.cities {
+  margin-top: 8rem;
+}
 
+.heading1>p {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 24px 0px;
+  padding-left: 4rem;
+}
+
+.card{
+  width: 22%;
+}
+.citybody{
+  display: flex;
+  gap: 2em;
+  padding: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

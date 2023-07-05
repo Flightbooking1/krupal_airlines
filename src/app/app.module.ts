@@ -12,6 +12,7 @@ import { SeatComponent } from './krupal_airlines/seat/seat.component';
 import { LoginComponent } from './krupal_airlines/login/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { KrupalModule } from './krupal_airlines/krupal.module';
+import { ScheduledFlightsComponent } from './krupal_airlines/scheduled-flights/scheduled-flights.component';
 
 
 @NgModule({
@@ -19,16 +20,19 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,KrupalModule,
+    BrowserModule, KrupalModule,
     BrowserAnimationsModule, FormsModule,
     KrupalAdminModule,
     RouterModule.forRoot([
       { path: 'home', component: KrupalComponent },
       { path: 'login', component: LoginComponent },
-      {  path: 'seat', component: SeatComponent},
+      { path: 'seat', component: SeatComponent },
       {
         path: "admin",
         loadChildren: () => import('./krupal_airlines_admin/krupaladmin.module').then(x => x.KrupalAdminModule)
+      },
+      {
+        path: 'scheduleflight', component: ScheduledFlightsComponent
       },
       {
         path: "**", redirectTo: "home"
