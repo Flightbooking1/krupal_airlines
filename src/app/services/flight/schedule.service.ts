@@ -77,4 +77,7 @@ return this.http.delete<Schedule>(`${SCHEDULESERVICE_API_PATH}deleteSchedule/${i
 patchSchedule(id:number):Observable<Schedule>{
   return this.http.patch<Schedule>(`${SCHEDULESERVICE_API_PATH}patchSchedule/${id}/`,id)
 }
+patchScheduleByTime(id:number):Observable<Schedule>{
+  return this.http.patch<Schedule>(`${SCHEDULESERVICE_API_PATH}patchScheduleByTime/${id}/`,id)
+}
 }

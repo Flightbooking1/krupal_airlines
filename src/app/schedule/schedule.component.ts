@@ -49,6 +49,9 @@ export class ScheduleComponent implements OnInit {
     this.scheduleservice.deleteSchedule(id).subscribe(data=>{
       console.log("deleted data Schedule",data)
       this.ngOnInit()
+    },error=>{
+      console.log('error',error)
+    this.showError()
     })
   }
   confirm(event: Event,id?:any) {
@@ -70,4 +73,22 @@ patchSchedule(id:number){
   console.log('patch method Schedule',data)
   })
   }
+
+  patchScheduleByTime(id:number){
+    this.scheduleservice.patchScheduleByTime(id).subscribe(data =>{
+    console.log('patch method ScheduleByTime',data)
+    })
+    }
+  getSerialNumber(schedule: any): number {
+      const index = this.schedules.indexOf(schedule);
+      return index + 1;
+    }
+  loadBookingHistoryPage(id:any){
+    this.scheduleId=id;
+    console.log('loadBookingHistoryPage',id)
+    this.route.navigate(['admin/schedule/bookinghistory',id])
+    }
+    showError() {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'UnAuthorized',  });
+      }
 }

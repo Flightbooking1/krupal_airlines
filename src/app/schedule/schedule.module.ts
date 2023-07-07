@@ -13,10 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { CardModule } from 'primeng/card';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
 @NgModule({
   imports: [
     CommonModule,ScheduleRoutingModule,TableModule, MatIconModule,DropdownModule,FormsModule,MatCardModule
     ,ReactiveFormsModule,ToastModule,ConfirmPopupModule,CardModule],
-  declarations: [ScheduleComponent, AddScheduleComponent,EditScheduleComponent]
+  declarations: [ScheduleComponent, AddScheduleComponent,EditScheduleComponent,BookingHistoryComponent]
 })
 export class ScheduleModule { }

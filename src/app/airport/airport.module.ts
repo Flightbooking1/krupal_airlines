@@ -13,6 +13,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 // import { ScheduleService } from '../services/flight/schedule.service';
 @NgModule({
   declarations: [AirportComponent,
@@ -24,7 +25,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     AirportRoutingModule,MatFormFieldModule,MatCardModule,
     MatButtonModule,MatIconModule,TableModule,ConfirmPopupModule,
-    ReactiveFormsModule,ToastModule,ButtonModule
+    ReactiveFormsModule,ToastModule,ButtonModule,CardModule
   ],
    providers:[]
 })

@@ -1,22 +1,29 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Login, User } from './../../../model/user.model';
+import { Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { MessageService } from 'primeng/api';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { CommonService } from 'src/app/services/common.service';
+import { error } from 'console';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [MessageService]
 })
-export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
+export class LoginComponent  implements DoCheck, OnChanges,OnInit {
 
   showForgotPassword:boolean=false;
   isenteringotp:boolean=false;
   changepassword:boolean=false;
 
-  constructor(private router:Router,private formBuild:FormBuilder,private service:UserService,private messageService: MessageService) { }
+  constructor(private commonservice : CommonService,private router:Router,private _snackBar: MatSnackBar,private formBuild:FormBuilder,private service:UserService,private messageService: MessageService) { }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action,{ duration: 3000});
+  }
   resetForm=this.formBuild.group({
     password:new FormControl('',[Validators.required,Validators.minLength(6)]),
     confirmpassword:new FormControl('',[Validators.required,Validators.minLength(6)])
@@ -36,7 +43,7 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
     first_name:new FormControl('',[Validators.required]),
     last_name:new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email]),
-    password:new FormControl('',[Validators.required,Validators.minLength(6)]),
+    password:new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))')]),
     phone_number:new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
     role:new FormControl('user'),
     status:new FormControl('active'),
@@ -67,21 +74,25 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
     return this.resetForm.get('confirmpassword')
    }
 
-   getcurrentuser(){
-    let token= localStorage.getItem("token")
-    let user=localStorage.getItem("user")
-    if(token!=null&& user!=null){
-      // console.log(atob(tok));
-      // console.log(JSON.parse(atob(user)));
-    }
-   }
+
 
    onLogin(){
     console.log(this.loginForm.value)
+    this.loginForm.value.password=btoa(this.loginForm.value.password)
+
     this.service.loginUser(this.loginForm.value).subscribe(
       (data:any)=>{
         localStorage.setItem("token",btoa(data.jwt))
         localStorage.setItem("user",btoa(JSON.stringify(data.user)))
+        localStorage.setItem("role",data.user.role)
+        if(data.user.role=="admin"){
+          this.router.navigateByUrl("admin")
+          this.openSnackBar("log in as admin","OK")
+        }
+        else if(data.user.role=="user"){
+          this.router.navigateByUrl("home")
+          this.openSnackBar("WELCOME BACK "+data.user.first_name.toUpperCase(),'OK',)
+        }
       },
       (error)=>{
         this.showError()
@@ -94,8 +105,9 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
    }
    reset(){
     console.log(this.resetForm.value)
+    this.resetForm.value.password= btoa(this.resetForm.value.password)
     let email= localStorage.getItem("email") || ""
-    this.service.newpassword(this.resetForm.value,email).subscribe(
+    this.service.newpassword(this.resetForm.value,email+"").subscribe(
       (data:any)=>{
         console.log(data);
         this.proceedtoResetpage=false;
@@ -118,10 +130,24 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit  {
    onRegister(){
     console.log("register")
     console.log(this.registerForm.value);
+
+    this.registerForm.value.password=btoa(this.registerForm.value.password)
+
     this.service.registerUser(this.registerForm.value).subscribe(
-      data=>console.log(data)
+      data=>{
+              console.log(data)
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: data.email+' Register Successful' });
+        this.registerForm.reset()
+  },error=>{
+console.log(error)
+this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Duplicate Email' })
+
+  }
     )
+
+
    }
+
    hidePassword: boolean = true;
 
   togglePasswordVisibility(): void {
@@ -147,6 +173,7 @@ forgotpassword(){
 onSubmitForgotPassword(){
   this.isenteringotp=true
  localStorage.setItem('email',btoa(this.forgotpasswordForm.value.email))
+ console.log(this.forgotpasswordForm.value.email)
  if(this.forgotpasswordForm.value.email!=null){
   this.sendemailForgotPassword(this.forgotpasswordForm.value)
  }
@@ -156,6 +183,7 @@ sendemailForgotPassword(email:any){
   this.startTimer(); // start timer for verify otp
   this.service.forgotpassword(email).subscribe(data=>{
   this.currentotp=(Number(data.Secretkey)-12345)+""
+
    })
 }
 
@@ -208,26 +236,19 @@ stopTimer() {
 }
 
 ngOnChanges(changes: SimpleChanges) {
-  // if (changes) {
-  //   console.log('Input property "data" changed',changes);
-  // }
 }
 
 ngDoCheck() {
-  // Custom change detection logic
-  // console.log('Change detection performed',this.first,this.second,this.third,this.fourth);
 
   if(this.first!=''&& this.second!=''&& this.third!=''&& this.fourth!=''
 ||this.first!=undefined&& this.second!=undefined&& this.third!=undefined&& this.fourth!=undefined
 ||this.first!=' '&& this.second!=' '&& this.third!=' '&& this.fourth!=' '){
-  // console.log('Changing inside ',this.first,this.second,this.third,this.fourth);
+
 if(this.currentotp!=""){
-  // console.log('comparing',this.first,this.second,this.third,this.fourth,this.currentotp.charAt(0),this.currentotp.charAt(1),this.currentotp.charAt(2),this.currentotp.charAt(3));
+
  let otpentered=this.first+""+this.second+""+this.third+""+this.fourth
-//  console.log(otpentered)
-//  console.log(this.currentotp);
+
   if (otpentered==this.currentotp) {
-    // console.log("OTP is correct");
    this. isotpcorrectcolour=true;
    this.getDynamicStyles();
     setTimeout(() => {
@@ -236,13 +257,11 @@ if(this.currentotp!=""){
     }, 1000);
 
   } else {
-    // console.log(otpentered)
     if(otpentered.trim().length<4){
       return
     }
     this.isotpcorrect = false;
     this.getDynamicStyles();
-    // console.log("Incorrect OTP");
   }
 }
 }
@@ -255,5 +274,11 @@ getDynamicStyles() {
   }else{
     this.borderColor='red'
   }
+}
+resetit(){
+  this.registerForm.reset(this.registerForm.value);
+  this.registerForm.reset()
+  console.log("destroy called");
+
 }
 }

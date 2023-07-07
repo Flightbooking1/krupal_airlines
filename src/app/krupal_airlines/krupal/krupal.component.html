@@ -1,37 +1,60 @@
-<krupal-header></krupal-header>
-
+<krupal-header style="z-index: 5;position: fixed;width: 100%;"></krupal-header>
 <div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../../assets/images/plane2 - Copy.jpeg" class="d-block w-100" style="height: 60vh" alt="Camera" />
-            </div>
-            <div class="carousel-item">
-                <img src="../../../assets/images/plane3.jpeg" class="d-block w-100" style="height: 60vh;" alt="Exotic Fruits" />
-            </div>
-            <div class="carousel-item">
-                <img src="../../../assets/images/plane5.png" class="d-block w-100" style="height: 60vh;" alt="Exotic Fruits" />
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
-            data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
-            data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <search-krupal style="display: block;"></search-krupal>
+  <br>
+<owl-carousel-o [options]="customOptions" >
+  <ng-template carouselSlide><img src="../../../assets/images/plane1.jpg" class="d-block w-100" style="height: 90vh;" alt=""></ng-template>
+  <ng-template carouselSlide><img src="../../../assets/images/airport.png"  class="d-block w-100"style="height: 90vh;"  alt=""></ng-template>
+  <ng-template carouselSlide><img src="../../../assets/images/nightplane.jpg"class="d-block w-100" style="height: 90vh;"  alt=""></ng-template>
+  <ng-template carouselSlide><img src="../../../assets/images/seats.jpg"class="d-block w-100" style="height: 90vh;"  alt=""></ng-template>
+</owl-carousel-o>
+<search-krupal style="display: block ; z-index: 1;" class="search"></search-krupal>
 </div>
-<div ><krupal-footer></krupal-footer></div>
+
+
+
+<!-- <button (click)="usersarr()"> click me</button>
+{{users}} -->
+<div class="cities">
+    <div class="heading1">
+        <p>Explore our growing network</p>
+    </div>
+    <div class="citybody">
+        <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="../../../assets/images/BangalorePalace.jpg" class="img-fluid"
+                    style="height: 17rem;background-size: cover;" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title" style="color:white;">Bengaluru</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="../../../assets/images/Charminar.jpg" class="img-fluid"
+                    style="height: 17rem;background-size: cover;" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title" style="color:white;">Hyderabad</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="../../../assets/images/india gate.jpg" class="img-fluid"
+                    style="height: 17rem;background-size: cover;" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title" style="color:white;">Delhi</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="../../../assets/images/mumbai.jpg" class="img-fluid"
+                    style="height: 17rem;background-size: cover;" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title" style="color:white;">Mumbai</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div><krupal-footer></krupal-footer></div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddScheduleComponent } from './add-schedule/add-schedule.component';
 import { ScheduleComponent } from './schedule.component';
 import { EditScheduleComponent } from './editSchedule/editSchedule.component';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
 
 
 
@@ -19,7 +20,12 @@ const routes: Routes = [
   {
     path:'edit/:id',
     component:EditScheduleComponent
+  },
+  {
+    path:'bookinghistory/:id',
+    component:BookingHistoryComponent
   }
+
 ];
 
 @NgModule({

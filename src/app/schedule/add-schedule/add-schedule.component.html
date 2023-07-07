@@ -11,7 +11,7 @@
             </div>
           </ng-template>
           <ng-template let-airport pTemplate="item" >
-            <div class="flex align-items-center gap-2">
+            <div class="flex align-items-center gap-2" *ngIf="airport.city !== selectedDestinationAirport?.city">
               <div>{{ airport.city }}</div>
             </div>
           </ng-template>
@@ -53,7 +53,7 @@
             <label for="flight" style="margin-right: 10px"><b>Base Price:</b></label>
           </div>
           <div class="col-75 form-group">
-            <input class="form-control" type="number" step="0.01" formControlName="base_price" placeholder="Enter number" />
+            <input class="form-control" type="number" step="0.01" formControlName="base_price" placeholder="Enter base price here" />
             <span class="text-danger" *ngIf="(f.base_price.touched || submitted) && f.base_price.errors?.required">Base Price is required</span>
           </div>
         </div>
