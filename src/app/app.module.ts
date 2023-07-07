@@ -12,6 +12,9 @@ import { SeatComponent } from './krupal_airlines/seat/seat.component';
 import { LoginComponent } from './krupal_airlines/login/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { KrupalModule } from './krupal_airlines/krupal.module';
+import { ScheduledFlightsComponent } from './krupal_airlines/scheduled-flights/scheduled-flights.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/airlinesintercepter/intercepter';
 
 
 @NgModule({
@@ -31,11 +34,24 @@ import { KrupalModule } from './krupal_airlines/krupal.module';
         loadChildren: () => import('./krupal_airlines_admin/krupaladmin.module').then(x => x.KrupalAdminModule)
       },
       {
+        path: 'scheduleflight', component: ScheduledFlightsComponent
+      },
+      {
+        path:'seat',component:SeatComponent
+      },
+      {
         path: "**", redirectTo: "home"
-      }
+      },
+
     ])
   ],
-  providers: [],
+  providers: [
+    {
+     provide:HTTP_INTERCEPTORS,
+     useClass:TokenInterceptor,
+     multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,8 @@
           <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuA" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-book"></i> Book
+                  <i class="fas fa-plus"></i> Book
+
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuA">
                   <!-- Dropdown items -->
@@ -65,10 +66,11 @@
               </div>
           </div>
           <div class="dropdown"  >
-              <button class="btn " type="button"  (click)="gotologin()">
+              <button class="btn " type="button"  (click)="gotologin()" *ngIf="!service.isloggedin()">
               <i class="fas fa-user"></i>
                  Login
               </button>
+              <button mat-raised-button (click)="logout()" *ngIf="service.isloggedin()">Logout  <i class="fa-solid fa-right-from-bracket"></i></button>
           </div>
       </div>
   </div>

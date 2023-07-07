@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -10,7 +12,7 @@ interface SideNavToggle {
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service :CommonService ,private router:Router) { }
   isSideNavCollapsed = false;
   screenWidth = 0;
 
@@ -38,6 +40,10 @@ export class AdminComponent implements OnInit {
       this.isSideNavCollapsed = data.collapsed;
    }
   ngOnInit(): void {
+  }
+  logout(){
+    localStorage.clear()
+    this.router.navigateByUrl('home')
   }
 
 }

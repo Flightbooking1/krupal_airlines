@@ -15,7 +15,13 @@ export class SeatComponent implements OnInit {
   constructor() {
     this.numOfBlock=3;
     this.numOfBlock+=1;
-    this.noOfPassenger=2;
+
+    let num=localStorage.getItem("noofpassenger")
+    if(num!=null){
+      this.noOfPassenger=Number(num);
+    }
+    // this.noOfPassenger=2;
+
     this.bookedseats=['A1','A7','B4','B6','A13']
     this.makeBlocks()
   }

@@ -49,11 +49,11 @@ export const navbarData: INavbarData[] = [
       items: [
         {
             routeLink: 'airport/list',
-            label: 'List Airport'
+            label: 'List Airports'
         },
         {
             routeLink: 'airport/create',
-            label: 'Add Airport'
+            label: 'Add Airports'
         }
     ]
   },
@@ -64,11 +64,11 @@ export const navbarData: INavbarData[] = [
     items: [
       {
           routeLink: 'flight/list',
-          label: 'List Flight'
+          label: 'List Flights'
       },
       {
           routeLink: 'flight/create',
-          label: 'Add Flight'
+          label: 'Add Flights'
       }
   ]
 },
@@ -79,11 +79,11 @@ export const navbarData: INavbarData[] = [
   items: [
     {
         routeLink: 'schedule/list',
-        label: 'List Schedule'
+        label: 'List Schedules'
     },
     {
         routeLink: 'schedule/create',
-        label: 'Create Schedule'
+        label: 'Create Schedules'
     }
 ]
 }

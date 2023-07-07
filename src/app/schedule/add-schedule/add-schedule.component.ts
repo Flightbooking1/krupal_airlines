@@ -43,6 +43,9 @@ export class AddScheduleComponent implements OnInit {
   get selectedSourceAirport() {
     return this.myForm.get('source_airport').value;
   }
+  get selectedDestinationAirport() {
+    return this.myForm.get('destination_airport').value;
+  }
   addSchedule(){
     console.log('enter into add method')
     console.log()

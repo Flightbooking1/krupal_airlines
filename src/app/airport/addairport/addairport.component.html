@@ -1,13 +1,7 @@
 <mat-card
   color="primary"
   class="card mat-elevation-z8"
-  style="
-    height: 300px;
-    width: 300%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  "
+
 >
 <form class="example-form" [formGroup]="myForm" (ngSubmit)="addAirport()">
   <mat-card-content>
@@ -17,21 +11,21 @@
     <div class="form-group">
       <div class="row">
         <div class="col-75 form-group labelname">
-          <label for="airport" style="margin-right: 10px">Airport Name:</label>
+          <label for="airport" style="margin-right: 10px"><b>Airport Name:</b></label>
         </div>
         <div class="col-75 form-group">
-          <input class="form-control" type="text" formControlName="airport_name" placeholder="Enter name" [ngClass]="{'is-invalid':(submitted && f.airport_name.errors) ||(f.airport_name.touched && f.airport_name.errors)}"/>
+          <input class="form-control" type="text" formControlName="airport_name" placeholder="Enter name here" [ngClass]="{'is-invalid':(submitted && f.airport_name.errors) ||(f.airport_name.touched && f.airport_name.errors)}"/>
           <div *ngIf="(submitted && f.airport_name.errors) || (f.airport_name.touched && f.airport_name.errors)" class="invalid-feedback">
               <div *ngIf="f.airport_name.errors?.required">Airport Name required</div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row form-group">
         <div class="col-75 form-group labelname">
-          <label for="airport" style="margin-right: 10px">City:</label>
+          <label for="airport" style="margin-right: 10px"><b>City:</b></label>
         </div>
         <div class="col-75 form-group">
-          <input class="form-control" type="text" formControlName="city" placeholder="Enter name" [ngClass]="{'is-invalid':(submitted && f.city.errors) ||(f.city.touched && f.city.errors)}" />
+          <input class="form-control" type="text" formControlName="city" placeholder="Enter name here" [ngClass]="{'is-invalid':(submitted && f.city.errors) ||(f.city.touched && f.city.errors)}" />
           <div *ngIf="(submitted && f.city.errors) || (f.city.touched && f.city.errors)" class="invalid-feedback">
             <div *ngIf="f.city.errors?.required">City required</div>
         </div>

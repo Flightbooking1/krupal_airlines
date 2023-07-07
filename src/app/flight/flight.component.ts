@@ -32,6 +32,9 @@ export class FlightComponent implements OnInit {
     this.scheduleservice.deleteFlight(id).subscribe(data=>{
       console.log("deleted data Flight",data)
       this.ngOnInit()
+    },error=>{
+      console.log('error',error)
+    this.showError()
     })
   }
   getAll(){
@@ -56,4 +59,11 @@ export class FlightComponent implements OnInit {
         }
     });
 }
+getSerialNumber(flight: any): number {
+  const index = this.flights.indexOf(flight);
+  return index + 1;
+}
+showError() {
+  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'UnAuthorized',  });
+  }
 }

@@ -11,7 +11,7 @@ height: 100%;
 background-size: cover;
 background-position: center;
 z-index: -1;
-background-image: url(https://media.npr.org/assets/img/2021/10/06/gettyimages-1302813215_wide-6c48e5a6aff547d2703693450c4805978de47435.jpg)
+background-image: url(https://petapixel.com/assets/uploads/2022/05/take-photo-out-an-airplane-window-800x534.jpg);
 }
 /*
 .login-page {
@@ -37,13 +37,30 @@ mat-card {
   margin-left: 130vh;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 480px) {
   mat-card {
     width: 80%;
     height: auto;
     margin: 10%;
   }
 }
+@media (max-width: 768px) and (min-width: 481px) {
+  mat-card {
+    width: 50%;
+    height: auto;
+    /* margin: 10%; */
+    margin-left: 30%;
+  }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  mat-card {
+    width: 40%;
+    height: auto;
+    /* margin: 10%; */
+    margin-left:50%
+  }
+}
+
 
 mat-form-field, mat-checkbox {
   width: 90%;
@@ -66,7 +83,7 @@ mat-card-content {
 .login-button {
   margin-top: 20px;
   display: block;
-  width:70%;
+  width:50%;
   margin: 20px auto;
 }
 .forgot-button{
@@ -103,7 +120,7 @@ mat-card-content {
   border-radius: 0.3em;
   background-color: #ece8e8;
   /* outline: none; */
-  /*Hide number field arrows*/
+  /* Hide number field arrows */
   /* -moz-appearance: textfield; */
 }
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BOOKINGSERVICE_API_PATH } from 'src/app/constants/IMPData';
+import { bookinghistory } from 'src/app/model/bookinghistory';
+import { Observable } from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
@@ -13,7 +15,11 @@ export class BookingService {
     // return of(this.bookedFlight);
     }
 
-    
+    getBookinHistory(id:any):Observable<bookinghistory[]>{
+      return this.http.get<bookinghistory[]>(`${BOOKINGSERVICE_API_PATH}bookingupadateAndDeleteAndRetraiveByID/${id}/`)
+    }
+
+
 
 
 
@@ -28,7 +34,7 @@ export class BookingService {
 
 
 // import { Injectable } from '@angular/core';
-// import { of } from 'rxjs';
+// import { of, Observable } from 'rxjs';
 
 // @Injectable({
 //   providedIn: 'root',

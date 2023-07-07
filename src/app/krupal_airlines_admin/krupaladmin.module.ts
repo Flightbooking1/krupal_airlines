@@ -9,6 +9,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { AdminGuard } from '../services/authguard/authguard/admin.guard';
+import {MatButtonModule} from '@angular/material/button';
 
 let routing=RouterModule.forChild(
   [
@@ -16,7 +18,7 @@ let routing=RouterModule.forChild(
       path:"admin",component:AdminComponent,/*data: { roles: ['admin']},*/
       children:[
         {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-        {path: 'dashboard', component: DashboardComponent},
+        {path: 'dashboard', component: DashboardComponent,canActivate:[AdminGuard]},
         {path: 'statistics', component: StatisticsComponent},
         {
           path: 'coupons',
@@ -40,7 +42,7 @@ let routing=RouterModule.forChild(
   ]
 )
 @NgModule({
-  imports: [routing,BrowserModule,HttpClientModule],
+  imports: [routing,BrowserModule,HttpClientModule,MatButtonModule],
   exports: [SidenavComponent,AdminComponent,],
   declarations: [
     SublevelMenuComponent,SidenavComponent,AdminComponent,

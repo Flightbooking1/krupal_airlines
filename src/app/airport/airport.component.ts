@@ -32,6 +32,9 @@ export class AirportComponent implements OnInit {
     this.scheduleservice.deleteAirport(id).subscribe(data=>{
       console.log("deleted data airport",data)
       this.ngOnInit()
+    },error=>{
+      console.log('error',error)
+    this.showError()
     })
 
   }
@@ -57,4 +60,11 @@ export class AirportComponent implements OnInit {
         }
     });
 }
+getSerialNumber(airport: any): number {
+  const index = this.airports.indexOf(airport);
+  return index + 1;
+}
+showError() {
+  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'UnAuthorized',  });
+  }
 }
