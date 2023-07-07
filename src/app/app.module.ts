@@ -17,19 +17,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/airlinesintercepter/intercepter';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule, FormsModule,KrupalModule,
-
+    BrowserModule,KrupalModule,
+    BrowserAnimationsModule, FormsModule,
     KrupalAdminModule,
     RouterModule.forRoot([
       { path: 'home', component: KrupalComponent },
       { path: 'login', component: LoginComponent },
+      {  path: 'seat', component: SeatComponent},
       {
         path: "admin",
         loadChildren: () => import('./krupal_airlines_admin/krupaladmin.module').then(x => x.KrupalAdminModule)

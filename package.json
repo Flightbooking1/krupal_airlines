@@ -24,6 +24,7 @@
     "@angular/router": "~13.3.0",
     "@coreui/angular": "^2.13.1",
     "angular-bootstrap-md": "^13.0.0",
+    "animate.css": "^4.1.1",
     "mdb-angular-ui-kit": "^2.3.0",
     "mdb-ui-kit": "^6.4.0",
     "ngx-owl-carousel-o": "^7.0.4",

@@ -1,4 +1,5 @@
 import { DropdownModule } from 'primeng/dropdown';
+import { BookingComponent } from './booking/booking/booking.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KrupalComponent } from './krupal/krupal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeatComponent } from './seat/seat.component';
 import { FlightSearchService } from '../services/scheduleSearch/ScheduleSearch.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -41,9 +43,10 @@ import { CommonService } from '../services/common.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FlightLoaderComponent } from './flightloader/flightloader.component';
+
 @NgModule({
-  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,
-    MatCardModule,
+  imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
+    MatCardModule,CarouselModule,
     MatIconModule,
     MatTabsModule,
     MatCheckboxModule,
@@ -74,8 +77,9 @@ import { FlightLoaderComponent } from './flightloader/flightloader.component';
     CarouselModule,
     BrowserAnimationsModule
   ],
-  exports: [FlightLoaderComponent,LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent],
-  declarations: [FlightLoaderComponent,LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent, ScheduledFlightsComponent],
+
+  exports: [FlightLoaderComponent,LoginComponent, SearchComponent, KrupalComponent,FooterComponent,HeaderComponent,SeatComponent,BookingComponent],
+  declarations: [FlightLoaderComponent,LoginComponent, SearchComponent, KrupalComponent, FooterComponent, HeaderComponent,HeaderComponent,SeatComponent, ScheduledFlightsComponent,BookingComponent],
   providers: [UserService,FlightSearchService,CommonService],
 })
 export class KrupalModule { }

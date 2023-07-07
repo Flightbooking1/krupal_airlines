@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { CommonService } from 'src/app/services/common.service';
 import { error } from 'console';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,10 +20,12 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit {
   isenteringotp:boolean=false;
   changepassword:boolean=false;
 
+
   constructor(private commonservice : CommonService,private router:Router,private _snackBar: MatSnackBar,private formBuild:FormBuilder,private service:UserService,private messageService: MessageService) { }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action,{ duration: 3000});
+
   }
   resetForm=this.formBuild.group({
     password:new FormControl('',[Validators.required,Validators.minLength(6)]),
@@ -75,6 +78,29 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit {
    }
 
 
+   getcurrentuser(){
+    let token= localStorage.getItem("token")
+    let user=localStorage.getItem("user")
+    if(token!=null&& user!=null){
+      return user;
+      // console.log(atob(tok));
+      // console.log(JSON.parse(atob(user)));
+    }
+  else return "";
+   }
+
+
+getrole(){
+  let role=localStorage.getItem("role")
+  if(role!=null)return role;
+  else return "";
+}
+islogedin(){
+ if(this.getcurrentuser()!=""){
+   return true;
+ }
+ else return false;
+}
 
    onLogin(){
     console.log(this.loginForm.value)
@@ -93,6 +119,7 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit {
           this.router.navigateByUrl("home")
           this.openSnackBar("WELCOME BACK "+data.user.first_name.toUpperCase(),'OK',)
         }
+
       },
       (error)=>{
         this.showError()
@@ -130,9 +157,7 @@ export class LoginComponent  implements DoCheck, OnChanges,OnInit {
    onRegister(){
     console.log("register")
     console.log(this.registerForm.value);
-
     this.registerForm.value.password=btoa(this.registerForm.value.password)
-
     this.service.registerUser(this.registerForm.value).subscribe(
       data=>{
               console.log(data)
@@ -147,6 +172,7 @@ this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Duplicat
 
 
    }
+
 
    hidePassword: boolean = true;
 

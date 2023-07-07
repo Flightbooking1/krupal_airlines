@@ -20,6 +20,7 @@
   border-radius: 16px 0 16px 16px;
   border: none;
   z-index: 2;
+
 }
 
 .searchPanel_tablist {
@@ -136,4 +137,5 @@ mat-datepicker-toggle {
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
+
 }
