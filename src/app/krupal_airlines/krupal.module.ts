@@ -34,15 +34,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KrupalComponent } from './krupal/krupal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeatComponent } from './seat/seat.component';
-import { FlightSearchService } from '../services/scheduleSearch/ScheduleSearch.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ScheduledFlightsComponent } from './scheduled-flights/scheduled-flights.component';
 import { CommonService } from '../services/common.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FlightLoaderComponent } from './flightloader/flightloader.component';
+import { FlightSearchService } from '../services/scheduleSearch/ScheduleSearch.service';
 
 @NgModule({
   imports: [FormsModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, BrowserModule,HttpClientModule,MatSnackBarModule,
