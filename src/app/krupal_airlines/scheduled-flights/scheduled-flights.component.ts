@@ -21,8 +21,6 @@ export class ScheduledFlightsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Simulate an asynchronous operation
-
 
     setTimeout(() => {
       this.showSearchComponent = true;
